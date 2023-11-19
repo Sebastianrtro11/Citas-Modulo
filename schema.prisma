@@ -1,0 +1,17 @@
+// schema.prisma
+generator client {
+provider = "prisma-client-js"
+output   = "./generated/client"
+}
+
+datasource db {
+provider = "sqlite"
+url      = "file:./dev.db"
+}
+
+model Cita {
+id     Int     @id @default(autoincrement())
+fecha  DateTime
+paciente String
+tratamiento String
+}

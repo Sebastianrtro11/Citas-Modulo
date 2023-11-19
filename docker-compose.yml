@@ -1,0 +1,57 @@
+version: "3.9"
+
+services:
+  backend:
+    restart: always
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app/backend:/usr/src/app
+    networks:
+      - prodnet
+
+  front:
+    restart: always
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    ports:
+      - "4000:3000"
+    volumes:
+      - ./front/app:/usr/src/app
+    networks:
+      - prodnet
+  
+  db:
+    image: postgres
+    restart: always
+    
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: 12345
+    volumes:
+      - ./baseDatos/local_pgdata:/var/lib/postgresql/data
+    networks:
+      - prodnet
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container3
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: dani@dani.com
+      PGADMIN_DEFAULT_PASSWORD: "12345"
+    volumes:
+      - ./baseDatos/pgadmin-data:/var/lib/pgadmin
+    networks:
+      - prodnet
+  
+networks:
+    prodnet:
+      driver: bridge
