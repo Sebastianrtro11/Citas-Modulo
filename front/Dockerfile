@@ -13,10 +13,6 @@ RUN apt-get update && \
 COPY ./app/package*.json .
 RUN npm install
 
-# Add the build:styles step
-COPY ./app/src/App.css ./src/
-RUN npm run build:styles
-
 # Bundle app source
 COPY ./app/ .
 

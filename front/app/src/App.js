@@ -1,17 +1,9 @@
-import './index.css'; 
-import './App.css'
-import { BrowserRouter, Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-
-ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById('root')
-  );
+import './styles/index.css';
+import FormularioCita from './components/FormularioCitas.js';
+import CitasList from './components/CitasList.js';
 
 function App() {
-  
   const [formData, setFormData] = useState({
     fecha: '',
     paciente: '',
@@ -55,55 +47,23 @@ function App() {
 
   useEffect(() => {
     consultarCitas();
-  }, []); 
+  }, []);
 
   return (
     <>
-    <div>
-      <div className="bg-gray-100 p-4 rounded shadow">
-        <h2 className="text-2xl font-bold mb-4">Agregar Cita</h2>
-        <label>Fecha:</label>
-        <input
-          type="text"
-          name="fecha"
-          value={formData.fecha}
-          onChange={handleInputChange}
+      <div>
+        <FormularioCita
+          formData={formData}
+          handleInputChange={handleInputChange}
+          agregarCita={agregarCita}
         />
-        <label>Paciente:</label>
-        <input
-          type="text"
-          name="paciente"
-          value={formData.paciente}
-          onChange={handleInputChange}
-        />
-        <label>Tratamiento:</label>
-        <input
-          type="text"
-          name="tratamiento"
-          value={formData.tratamiento}
-          onChange={handleInputChange}
-        />
-        <button onClick={agregarCita}>Agregar Cita</button>
-        </div>
       </div>
 
-      {}
-    <div>
-      <div className="mt-4">
-        <h2 className="text-2xl font-bold mb-4">Lista de Citas</h2>
-        <ul>
-          {citas.map((cita) => (
-            <li key={cita.id}>
-              {cita.fecha} - {cita.paciente} - {cita.tratamiento}
-            </li>
-          ))}
-        </ul>
+      <div>
+        <CitasList citas={citas} />
       </div>
-    </div>
-  </>
+    </>
   );
 }
 
 export default App;
-
-

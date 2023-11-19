@@ -1,0 +1,63 @@
+
+
+body {
+    background-color: #333; /* Fondo gris obscuro */
+    color: #fff; /* Texto en color blanco */
+    font-family: Arial, sans-serif; /* Estilo de fuente */
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .form-container {
+    background-color: #555; /* Fondo gris más claro para el formulario */
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    margin-bottom: 20px;
+  }
+  
+  .form-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+  
+  .form-container button {
+    background-color: #3498db; /* Azul celeste */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .citas-container {
+    border: 2px solid #3498db; /* Recuadro alrededor del listado de citas */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+  .citas-container h2 {
+    color: #3498db; /* Título azul celeste */
+    margin-bottom: 10px;
+  }
+  
+  .citas-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .citas-container li {
+    margin-bottom: 10px;
+  }
+  
